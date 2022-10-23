@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "192029205621",
+    "project_id": "edoctor-51932",
+    "storage_bucket": "edoctor-51932.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192029205621:android:d30abb922a41a27a72843c",
+        "android_client_info": {
+          "package_name": "com.example.e_doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192029205621-25n08d1rb369vmcs8k9gg7hf3k6ivfe3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmE1lBM2fisN-rCu-45i9EzWvMC1FMvSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192029205621-25n08d1rb369vmcs8k9gg7hf3k6ivfe3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "192029205621-j8s26bi1qju4pc033h01pf3guqh8er9n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eDoctor"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
