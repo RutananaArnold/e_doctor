@@ -1,7 +1,10 @@
+import 'package:e_doctor/auth/login.dart';
 import 'package:e_doctor/controllers/auth_controller.dart';
 import 'package:e_doctor/widgets/profile_tile.dart';
 import 'package:e_doctor/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -105,11 +108,43 @@ class _ProfileState extends State<Profile> {
             child: RoundedButton(
                 text: "SignOut",
                 press: () {
-                  // signingout();
-                  // Navigator.of(context).pushAndRemoveUntil(
-                  //     MaterialPageRoute(
-                  //         builder: ((context) => const AuthGate())),
-                  //     (route) => true);
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content:
+                              const Text("Are you sure you want to log out? "),
+                          actions: [
+                            InkWell(
+                              child: const Text(
+                                "YES",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              onTap: () async {
+                                SharedPreferences sharedPreferences =
+                                    await SharedPreferences.getInstance();
+                                sharedPreferences.remove("userToken");
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: ((context) => const Login())),
+                                    (route) => true);
+                              },
+                            ),
+                            const SizedBox(height: 50),
+                            InkWell(
+                              child: const Text(
+                                "CANCEL",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        );
+                      });
                 },
                 color: Colors.green),
           )

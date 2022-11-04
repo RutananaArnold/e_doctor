@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_doctor/screens/generic_test.dart';
-import 'package:e_doctor/screens/specialised_test.dart';
+import 'package:e_doctor/screens/patient%20screens/generic_test.dart';
+import 'package:e_doctor/screens/patient%20screens/specialised_test.dart';
+
 import 'package:flutter/material.dart';
 
 class BookTest extends StatefulWidget {

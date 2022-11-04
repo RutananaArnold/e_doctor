@@ -57,6 +57,7 @@ class AuthController extends GetxController {
   fetchUserContent() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? token = preferences.getString("userToken");
+     print(token);
     await FirebaseFirestore.instance
         .collection("users")
         .doc(token)

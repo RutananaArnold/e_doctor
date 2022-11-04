@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DoctorCard extends StatelessWidget {
+  final String doctorName;
+  final void Function()? onTap;
   const DoctorCard({
     Key? key,
+    required this.doctorName,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -17,7 +21,7 @@ class DoctorCard extends StatelessWidget {
             left: size.width * 0.02,
             right: size.width * 0.02),
         child: ListTile(
-          onTap: () {},
+          onTap: onTap,
           horizontalTitleGap: 0.0,
           leading: SizedBox(
             height: MediaQuery.of(context).size.height / 0.02,
@@ -30,9 +34,9 @@ class DoctorCard extends StatelessWidget {
           ),
           title: Padding(
             padding: EdgeInsets.only(left: size.width * 0.05),
-            child: const Text(
-              "Dr.Jack",
-              style: TextStyle(color: Colors.black, fontSize: 11.5),
+            child: Text(
+              doctorName,
+              style: const TextStyle(color: Colors.black, fontSize: 11.5),
             ),
           ),
           subtitle: Padding(

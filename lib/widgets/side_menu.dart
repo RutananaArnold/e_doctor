@@ -1,9 +1,9 @@
 import 'package:e_doctor/controllers/auth_controller.dart';
 import 'package:e_doctor/controllers/menu_controller.dart';
-import 'package:e_doctor/screens/book_test.dart';
-import 'package:e_doctor/screens/consult_doctor.dart';
-import 'package:e_doctor/screens/help.dart';
-import 'package:e_doctor/screens/profile.dart';
+import 'package:e_doctor/screens/patient%20screens/book_test.dart';
+import 'package:e_doctor/screens/patient%20screens/consult_doctor.dart';
+import 'package:e_doctor/screens/patient%20screens/help.dart';
+import 'package:e_doctor/screens/patient%20screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,26 +38,31 @@ class SideMenu extends StatelessWidget {
                   ),
                   decoration: const BoxDecoration(color: Colors.white),
                 ),
-                DrawerListTile(
-                    title: "Consult a Doctor",
-                    svgSrc: Icons.medication,
-                    press: () {
-                      menuCtrol.openCloseDrawer(context);
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: ((context) => const ConsultDoctor())),
-                          (route) => true);
-                    }),
-                DrawerListTile(
-                    title: "Book a Test",
-                    svgSrc: Icons.book,
-                    press: () {
-                      menuCtrol.openCloseDrawer(context);
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: ((context) => const BookTest())),
-                          (route) => true);
-                    }),
+                authContrler.userProfile[0].role == 'patient'
+                    ? DrawerListTile(
+                        title: "Consult a Doctor",
+                        svgSrc: Icons.medication,
+                        press: () {
+                          menuCtrol.openCloseDrawer(context);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: ((context) =>
+                                      const ConsultDoctor())),
+                              (route) => true);
+                        })
+                    : Container(),
+                authContrler.userProfile[0].role == 'patient'
+                    ? DrawerListTile(
+                        title: "Book a Test",
+                        svgSrc: Icons.book,
+                        press: () {
+                          menuCtrol.openCloseDrawer(context);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: ((context) => const BookTest())),
+                              (route) => true);
+                        })
+                    : Container(),
                 DrawerListTile(
                     title: "Help",
                     svgSrc: Icons.help,

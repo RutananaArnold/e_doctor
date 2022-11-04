@@ -1,12 +1,15 @@
 import 'package:e_doctor/controllers/menu_controller.dart';
-import 'package:e_doctor/screens/appointments.dart';
+import 'package:e_doctor/screens/patient%20screens/appointments.dart';
 import 'package:e_doctor/widgets/side_menu.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 
 class Index extends StatefulWidget {
   int currentTabIndex;
-  Index({Key? key, this.currentTabIndex = 0}) : super(key: key);
+  Index({
+    Key? key,
+    this.currentTabIndex = 0,
+  }) : super(key: key);
 
   @override
   State<Index> createState() => _IndexState();

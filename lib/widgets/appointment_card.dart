@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 
 class AppointmentCard extends StatelessWidget {
   final String screenCheck;
-  const AppointmentCard({
-    Key? key,
-    required this.screenCheck,
-  }) : super(key: key);
+  final String date;
+  final String time;
+  final String drName;
+  final String status;
+  const AppointmentCard(
+      {Key? key,
+      required this.screenCheck,
+      required this.date,
+      required this.time,
+      required this.drName,
+      required this.status})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -32,10 +40,10 @@ class AppointmentCard extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
-                      const Text(
-                        "02 January 2021",
-                        style: TextStyle(
-                          color: Colors.black54,
+                      Text(
+                        date,
+                        style: const TextStyle(
+                          color: Colors.black87,
                         ),
                       ),
                       const Text(
@@ -43,10 +51,10 @@ class AppointmentCard extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
-                      const Text(
-                        "Dr.Jack",
-                        style: TextStyle(
-                          color: Colors.black54,
+                      Text(
+                        drName,
+                        style: const TextStyle(
+                          color: Colors.black87,
                         ),
                       ),
                       screenCheck == 'upcoming'
@@ -76,21 +84,21 @@ class AppointmentCard extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
-                      const Text(
-                        "11: 00am",
-                        style: TextStyle(
-                          color: Colors.black54,
+                      Text(
+                        time,
+                        style: const TextStyle(
+                          color: Colors.black87,
                         ),
                       ),
                       const Text(
-                        "Appointment Type",
+                        "Status",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
-                      const Text(
-                        "Offline",
-                        style: TextStyle(
-                          color: Colors.black54,
+                      Text(
+                        status,
+                        style: const TextStyle(
+                          color: Colors.black87,
                         ),
                       ),
                       screenCheck == 'upcoming'
