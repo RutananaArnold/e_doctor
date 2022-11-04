@@ -10,6 +10,9 @@ class AdvertPage extends StatefulWidget {
 class _AdvertPageState extends State<AdvertPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(),
+      body: Container(),
+    );
   }
 }

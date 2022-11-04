@@ -5,7 +5,6 @@ import 'package:e_doctor/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -128,7 +127,7 @@ class _ProfileState extends State<Profile> {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                         builder: ((context) => const Login())),
-                                    (route) => true);
+                                    (route) => false);
                               },
                             ),
                             const SizedBox(height: 50),
