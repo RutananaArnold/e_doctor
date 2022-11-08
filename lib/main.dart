@@ -4,6 +4,7 @@ import 'package:e_doctor/controllers/doctors_controller.dart';
 import 'package:e_doctor/screens/patient%20screens/index.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'eDoctor',
       theme: ThemeData(
         // This is the theme of your application.
@@ -55,19 +56,20 @@ class _MainState extends State<Main> {
   void initState() {
     super.initState();
     checkLoginStatus();
-    authContrler.fetchUserContent();
+    authContrler.fetchAllUsers();
     doctorCntler.fetchDoctors();
   }
 
   checkLoginStatus() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    if (sharedPreferences.getString("userToken") == null) {
+    if (sharedPreferences.getString("userToken") != null ||
+        sharedPreferences.getString("userPass") != null) {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => const Login()),
+          MaterialPageRoute(builder: (BuildContext context) => Index()),
           (Route<dynamic> route) => false);
     } else {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (BuildContext context) => Index()),
+          MaterialPageRoute(builder: (BuildContext context) => const Login()),
           (Route<dynamic> route) => false);
     }
   }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_doctor/controllers/auth_controller.dart';
 import 'package:e_doctor/widgets/appointment_card.dart';
 import 'package:flutter/material.dart';
 
@@ -30,9 +31,9 @@ class _UpcomingAppointmentsState extends State<UpcomingAppointments> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
-              return data['status'] == 'pending'
+              return data['status'] == 'pending' &&
+                      data['patientEmail'] == authContrler.userProfile[0].email
                   ? AppointmentCard(
-                      screenCheck: 'upcoming',
                       time: data['appointmentTime'],
                       date: data['appointmentDate'],
                       drName: data['doctorName'],

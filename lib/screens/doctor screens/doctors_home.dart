@@ -1,6 +1,5 @@
-import 'package:e_doctor/screens/doctor%20screens/advert_page.dart';
+import 'package:e_doctor/widgets/dashboardcard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class DoctorsHome extends StatefulWidget {
   const DoctorsHome({super.key});
@@ -10,26 +9,31 @@ class DoctorsHome extends StatefulWidget {
 }
 
 class _DoctorsHomeState extends State<DoctorsHome> {
+  List<String> svgSrc = [
+    "assets/images/appliedjobs.svg",
+    "assets/images/messages.svg",
+  ];
+
+  List<String> labels = [
+    "Total Appointments",
+    "Total Messages",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: SpeedDial(
-        animatedIcon: AnimatedIcons.add_event,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.4,
-        children: [
-          SpeedDialChild(
-              child: const Icon(Icons.person_add),
-              label: "Add session advert",
-              backgroundColor: Colors.red,
-              onTap: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: ((context) => const AdvertPage())),
-                    (route) => true);
-              }),
-        ],
+        body: GridView.count(
+      crossAxisCount: 2,
+      children: List.generate(
+        2,
+        (index) => Padding(
+          padding:
+              const EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
+          child: DashboardCard(
+            svgSrc: svgSrc[index],
+            label: labels[index],
+          ),
+        ),
       ),
-    );
+    ));
   }
 }

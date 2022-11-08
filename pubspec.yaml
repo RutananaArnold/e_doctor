@@ -43,7 +43,7 @@ dependencies:
   shared_preferences: ^2.0.15
   cloud_firestore: 
   sliding_up_panel: ^2.0.0+1
-  flutter_speed_dial: ^6.2.0
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:

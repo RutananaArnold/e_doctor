@@ -13,8 +13,8 @@ class ProfileTile extends StatelessWidget {
     this.label,
     this.value,
     this.fontWeight = FontWeight.w500,
-    this.padding = 10.0,
-    this.textSize = 16,
+    this.padding = 8.0,
+    this.textSize = 10,
     this.elevation = 1,
   }) : super(key: key);
 
@@ -38,6 +38,7 @@ class ProfileTile extends StatelessWidget {
             ),
             Text(
               value ?? "no data",
+              overflow: TextOverflow.clip,
               style: TextStyle(
                   fontSize: textSize,
                   fontWeight: fontWeight,

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppointmentCard extends StatelessWidget {
-  final String screenCheck;
   final String date;
   final String time;
   final String drName;
   final String status;
   const AppointmentCard(
       {Key? key,
-      required this.screenCheck,
       required this.date,
       required this.time,
       required this.drName,
@@ -57,17 +55,15 @@ class AppointmentCard extends StatelessWidget {
                           color: Colors.black87,
                         ),
                       ),
-                      screenCheck == 'upcoming'
-                          ? Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.green,
-                                  ),
-                                  onPressed: () {},
-                                  child: const Text("Reschedule")),
-                            )
-                          : Container()
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                            ),
+                            onPressed: () {},
+                            child: const Text("View appointment")),
+                      )
                     ],
                   ),
                 ),
@@ -101,20 +97,6 @@ class AppointmentCard extends StatelessWidget {
                           color: Colors.black87,
                         ),
                       ),
-                      screenCheck == 'upcoming'
-                          ? Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                  ),
-                                  onPressed: () {},
-                                  child: const Text(
-                                    "Cancel",
-                                    style: TextStyle(color: Colors.black),
-                                  )),
-                            )
-                          : Container()
                     ],
                   ),
                 )

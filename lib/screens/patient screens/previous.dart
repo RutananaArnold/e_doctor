@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_doctor/controllers/auth_controller.dart';
 import 'package:e_doctor/widgets/appointment_card.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class PreviousAppointments extends StatefulWidget {
 }
 
 class _PreviousAppointmentsState extends State<PreviousAppointments> {
-   final Stream<QuerySnapshot> requestsStream =
+  final Stream<QuerySnapshot> requestsStream =
       FirebaseFirestore.instance.collection('appointments').snapshots();
   @override
   Widget build(BuildContext context) {
@@ -30,9 +31,9 @@ class _PreviousAppointmentsState extends State<PreviousAppointments> {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
-              return data['status'] == 'approved'
+              return data['status'] == 'approved' &&
+                      data['patientEmail'] == authContrler.userProfile[0].email
                   ? AppointmentCard(
-                      screenCheck: 'upcoming',
                       time: data['appointmentTime'],
                       date: data['appointmentDate'],
                       drName: data['doctorName'],

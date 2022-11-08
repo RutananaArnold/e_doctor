@@ -123,7 +123,9 @@ class _ProfileState extends State<Profile> {
                               onTap: () async {
                                 SharedPreferences sharedPreferences =
                                     await SharedPreferences.getInstance();
+                                print(sharedPreferences.getString("userToken"));
                                 sharedPreferences.remove("userToken");
+                                sharedPreferences.remove("userPass");
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                         builder: ((context) => const Login())),

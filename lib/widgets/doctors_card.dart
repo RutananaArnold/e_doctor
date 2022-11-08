@@ -46,12 +46,6 @@ class DoctorCard extends StatelessWidget {
               style: TextStyle(color: Colors.black54),
             ),
           ),
-          trailing: const Chip(
-              avatar: Icon(
-                Icons.star,
-                color: Colors.yellow,
-              ),
-              label: Text("4.8")),
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(15))),
         ),

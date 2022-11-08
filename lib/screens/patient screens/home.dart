@@ -4,9 +4,9 @@ import 'package:e_doctor/controllers/doctor_booking_controller.dart';
 import 'package:e_doctor/controllers/doctors_controller.dart';
 import 'package:e_doctor/screens/doctor%20screens/doctors_home.dart';
 import 'package:e_doctor/screens/patient%20screens/doctor_infor.dart';
-import 'package:e_doctor/widgets/category_card.dart';
+import 'package:e_doctor/screens/patient%20screens/symptom_page.dart';
 import 'package:e_doctor/widgets/doctors_card.dart';
-import 'package:e_doctor/widgets/symptom_card.dart';
+import 'package:e_doctor/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -84,22 +84,12 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: EdgeInsets.only(left: size.height * 0.02),
                             child: const Text(
-                              "Categories ",
+                              "Disease diagnosis using your symptoms ",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ),
                           ),
-                          SizedBox(
-                            width: size.width * 0.5,
-                          ),
-                          InkWell(
-                            child: const Text(
-                              "View All",
-                              style: TextStyle(color: Colors.green),
-                            ),
-                            onTap: () {},
-                          )
                         ],
                       ),
                     ),
@@ -108,45 +98,18 @@ class _HomeState extends State<Home> {
                       height: size.height * 0.15,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
-                        child: Row(
-                            children: List.generate(
-                                6, (index) => const CategoryCard())),
-                      ),
-                    ),
-                    // symptoms part
-                    SizedBox(
-                      height: size.height * 0.03,
-                      child: Wrap(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: size.height * 0.02),
-                            child: const Text(
-                              "Symptoms ",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            ),
-                          ),
-                          SizedBox(
-                            width: size.width * 0.5,
-                          ),
-                          InkWell(
-                            child: const Text(
-                              "View All",
-                              style: TextStyle(color: Colors.green),
-                            ),
-                            onTap: () {},
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.15,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                            children: List.generate(
-                                5, (index) => const SymptomCard())),
+                        child: Center(
+                          child: RoundedButton(
+                              text: "Click to enter symptoms",
+                              press: () {
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            const CategoryPage()),
+                                    (Route<dynamic> route) => true);
+                              },
+                              color: Colors.greenAccent),
+                        ),
                       ),
                     ),
 

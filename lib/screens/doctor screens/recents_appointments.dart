@@ -46,12 +46,12 @@ class _RecentDoctorAppointmentsState extends State<RecentDoctorAppointments> {
                             children: [
                               ProfileTile(
                                 padding: 20,
-                                label: "Date",
+                                label: "Date:",
                                 value: data['appointmentDate'],
                               ),
                               ProfileTile(
                                 padding: 20,
-                                label: "Time",
+                                label: "Time:",
                                 value: data['appointmentTime'],
                               ),
                             ],
@@ -60,12 +60,12 @@ class _RecentDoctorAppointmentsState extends State<RecentDoctorAppointments> {
                             children: [
                               ProfileTile(
                                 padding: 20,
-                                label: "Patient",
+                                label: "Patient:",
                                 value: data['patientEmail'],
                               ),
                               ProfileTile(
                                 padding: 20,
-                                label: "Tel",
+                                label: "Tel:",
                                 value: data['tel'],
                               ),
                             ],

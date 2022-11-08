@@ -1,8 +1,7 @@
 // ignore_for_file: iterable_contains_unrelated_type
 
-import 'package:e_doctor/controllers/loading_controller.dart';
 import 'package:e_doctor/screens/patient%20screens/forgotpassword.dart';
-import 'package:e_doctor/screens/patient%20screens/index.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +24,7 @@ class _LoginState extends State<Login> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    authContrler.fetchUserContent();
+    authContrler.fetchAllUsers();
   }
 
   final formkey = GlobalKey<FormState>();
@@ -100,28 +99,8 @@ class _LoginState extends State<Login> {
                       text: "LOGIN",
                       press: () {
                         if (formkey.currentState!.validate()) {
-                          if (control.userProfile.isNotEmpty) {
-                            for (var user in control.userProfile) {
-                              if (user.email == control.logInEmail &&
-                                  user.password == control.logInPassword) {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (context) => Index(),
-                                    ),
-                                    (route) => false);
-                              } else {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(
-                                      builder: (context) => const Login(),
-                                    ),
-                                    (route) => false);
-                                loaderController.showErrorMsg(
-                                    "User Credential don't match");
-                              }
-                            }
-                          } else {
-                            loaderController.showErrorMsg("User Object empty");
-                          }
+                          control.getOneUser(
+                              control.logInEmail, control.logInPassword);
                         }
                       },
                       color: Colors.green,
