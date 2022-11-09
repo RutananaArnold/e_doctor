@@ -23,8 +23,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    authContrler.fetchAllUsers();
+    doctorCntler.fetchDoctors();
+
     return GetMaterialApp(
-      title: 'eDoctor',
+      title: 'e-Doctor',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -64,10 +67,12 @@ class _MainState extends State<Main> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     if (sharedPreferences.getString("userToken") != null ||
         sharedPreferences.getString("userPass") != null) {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (BuildContext context) => Index()),
           (Route<dynamic> route) => false);
     } else {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (BuildContext context) => const Login()),
           (Route<dynamic> route) => false);
